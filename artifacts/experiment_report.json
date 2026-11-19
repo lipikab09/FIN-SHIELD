@@ -1,0 +1,1524 @@
+{
+  "project": "FIN-SHIELD ML",
+  "version": "0.1.0",
+  "gbdt_backend": "lightgbm",
+  "runtime_seconds": 6173.04,
+  "dataset_metadata": {
+    "adapter": "synthetic_stream",
+    "schema_version": "1.0.0",
+    "dataset_fingerprint": "9da2a81dff111945",
+    "n_rows": 24000,
+    "n_columns": 20,
+    "fraud_count": 1507,
+    "fraud_rate": 0.06279166666666666,
+    "time_span_days": 41.92052909055087,
+    "missing_rates": {
+      "device_id": 0.08941666666666667,
+      "ip_subnet": 0.0,
+      "email_domain": 0.0,
+      "dist_km": 0.12020833333333333
+    }
+  },
+  "split_metadata": {
+    "total_events": 24000,
+    "train_events": 12678,
+    "calib_events": 1877,
+    "test_events": 5999,
+    "embargo_dropped_events": 3446,
+    "label_delay_hours": 72.0,
+    "train_max_ts": 1912318.349612645,
+    "calib_min_ts": 2171675.7178787235,
+    "calib_max_ts": 2456220.502401103,
+    "test_min_ts": 2715780.4358193944,
+    "test_max_ts": 3622297.229764515,
+    "train_fraud_rate": 0.053636220224010094,
+    "calib_fraud_rate": 0.05753862546616942,
+    "test_fraud_rate": 0.08351391898649775
+  },
+  "active_policy_thresholds": {
+    "stepup_threshold": 0.12,
+    "block_threshold": 0.45,
+    "expected_net_savings": 5336.77,
+    "fraud_prevented_value": 5779.27,
+    "chargeback_loss_incurred": 6263.52,
+    "review_cost_incurred": 310.5,
+    "false_decline_loss_incurred": 132.0,
+    "approve_rate": 0.9297,
+    "stepup_rate": 0.0368,
+    "block_rate": 0.0336
+  },
+  "model_benchmarks": {
+    "tabular_gbdt_baseline": {
+      "pr_auc": 0.545,
+      "roc_auc": 0.84746,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.29142,
+      "recall_at_fpr_1_0pct": 0.37126,
+      "ece": 0.01758,
+      "brier_score": 0.05049,
+      "expected_net_savings": 30529.36,
+      "fraud_prevented_value": 34027.36,
+      "chargeback_loss_incurred": 22540.51,
+      "review_cost_incurred": 1350.0,
+      "false_decline_loss_incurred": 2148.0,
+      "approve_rate": 0.877,
+      "stepup_rate": 0.05,
+      "block_rate": 0.073,
+      "description": "Causal Tabular GBDT (No Graph)",
+      "stepup_threshold": 0.12,
+      "block_threshold": 0.45,
+      "conformal_abstention_rate": 0.6444,
+      "bootstrap_95_ci": {
+        "pr_auc": {
+          "mean": 0.54661,
+          "ci_lower_95": 0.49168,
+          "ci_upper_95": 0.59263
+        },
+        "roc_auc": {
+          "mean": 0.84711,
+          "ci_lower_95": 0.82597,
+          "ci_upper_95": 0.87031
+        },
+        "ece": {
+          "mean": 0.01875,
+          "ci_lower_95": 0.01336,
+          "ci_upper_95": 0.02365
+        },
+        "expected_net_savings": {
+          "mean": 30714.0963,
+          "ci_lower_95": 26218.83925,
+          "ci_upper_95": 35299.6675
+        }
+      }
+    },
+    "tabular_entity_resnet": {
+      "pr_auc": 0.40009,
+      "roc_auc": 0.80222,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.0,
+      "recall_at_fpr_1_0pct": 0.25549,
+      "ece": 0.01318,
+      "brier_score": 0.06122,
+      "expected_net_savings": 23064.32,
+      "fraud_prevented_value": 26533.82,
+      "chargeback_loss_incurred": 30034.05,
+      "review_cost_incurred": 2425.5,
+      "false_decline_loss_incurred": 1044.0,
+      "approve_rate": 0.871,
+      "stepup_rate": 0.0898,
+      "block_rate": 0.0392,
+      "description": "Causal Tabular Entity-ResNet (Focal Loss)",
+      "stepup_threshold": 0.18,
+      "block_threshold": 0.27,
+      "conformal_abstention_rate": 0.9398
+    },
+    "graph_augmented_resnet": {
+      "pr_auc": 0.50223,
+      "roc_auc": 0.8138,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.27545,
+      "recall_at_fpr_1_0pct": 0.35729,
+      "ece": 0.01997,
+      "brier_score": 0.05375,
+      "expected_net_savings": 25391.44,
+      "fraud_prevented_value": 27839.44,
+      "chargeback_loss_incurred": 28728.43,
+      "review_cost_incurred": 792.0,
+      "false_decline_loss_incurred": 1656.0,
+      "approve_rate": 0.9073,
+      "stepup_rate": 0.0293,
+      "block_rate": 0.0633,
+      "description": "Graph-Augmented Entity-ResNet",
+      "stepup_threshold": 0.12,
+      "block_threshold": 0.45,
+      "conformal_abstention_rate": 0.6023
+    },
+    "graph_augmented_gbdt": {
+      "pr_auc": 0.55671,
+      "roc_auc": 0.85317,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.39721,
+      "recall_at_fpr_1_0pct": 0.42515,
+      "ece": 0.02449,
+      "brier_score": 0.04913,
+      "expected_net_savings": 29141.07,
+      "fraud_prevented_value": 31301.07,
+      "chargeback_loss_incurred": 25266.8,
+      "review_cost_incurred": 1584.0,
+      "false_decline_loss_incurred": 576.0,
+      "approve_rate": 0.8973,
+      "stepup_rate": 0.0587,
+      "block_rate": 0.044,
+      "description": "Graph-Augmented GBDT (Causal Bipartite + Delayed-Label Risk)",
+      "stepup_threshold": 0.12,
+      "block_threshold": 0.45,
+      "conformal_abstention_rate": 0.6253,
+      "bootstrap_95_ci": {
+        "pr_auc": {
+          "mean": 0.5585,
+          "ci_lower_95": 0.51068,
+          "ci_upper_95": 0.60218
+        },
+        "roc_auc": {
+          "mean": 0.85267,
+          "ci_lower_95": 0.83068,
+          "ci_upper_95": 0.87384
+        },
+        "ece": {
+          "mean": 0.02483,
+          "ci_lower_95": 0.01973,
+          "ci_upper_95": 0.03052
+        },
+        "expected_net_savings": {
+          "mean": 26598.24055,
+          "ci_lower_95": 22873.64025,
+          "ci_upper_95": 30236.261
+        }
+      }
+    },
+    "hybrid_graph_ensemble": {
+      "pr_auc": 0.56073,
+      "roc_auc": 0.85584,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.37525,
+      "recall_at_fpr_1_0pct": 0.40918,
+      "ece": 0.02372,
+      "brier_score": 0.04897,
+      "expected_net_savings": 30069.92,
+      "fraud_prevented_value": 32109.92,
+      "chargeback_loss_incurred": 24457.95,
+      "review_cost_incurred": 1476.0,
+      "false_decline_loss_incurred": 564.0,
+      "approve_rate": 0.8996,
+      "stepup_rate": 0.0547,
+      "block_rate": 0.0457,
+      "description": "Hybrid Graph-GBDT + Graph-ResNet Ensemble",
+      "stepup_threshold": 0.12,
+      "block_threshold": 0.45,
+      "conformal_abstention_rate": 0.6669,
+      "bootstrap_95_ci": {
+        "pr_auc": {
+          "mean": 0.56271,
+          "ci_lower_95": 0.51187,
+          "ci_upper_95": 0.60801
+        },
+        "roc_auc": {
+          "mean": 0.85514,
+          "ci_lower_95": 0.83277,
+          "ci_upper_95": 0.87617
+        },
+        "ece": {
+          "mean": 0.02387,
+          "ci_lower_95": 0.01907,
+          "ci_upper_95": 0.0293
+        },
+        "expected_net_savings": {
+          "mean": 30129.9396,
+          "ci_lower_95": 26085.42825,
+          "ci_upper_95": 34370.0005
+        }
+      }
+    },
+    "leaky_future_ablation_gbdt": {
+      "pr_auc": 0.56477,
+      "roc_auc": 0.86207,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.39521,
+      "recall_at_fpr_1_0pct": 0.40319,
+      "ece": 0.02479,
+      "brier_score": 0.04874,
+      "expected_net_savings": 32219.18,
+      "fraud_prevented_value": 35462.18,
+      "chargeback_loss_incurred": 21105.69,
+      "review_cost_incurred": 2583.0,
+      "false_decline_loss_incurred": 660.0,
+      "approve_rate": 0.8576,
+      "stepup_rate": 0.0957,
+      "block_rate": 0.0467,
+      "description": "Ablation: Non-Causal Future-Leaky Features (Invalid for Prod)",
+      "stepup_threshold": 0.12,
+      "block_threshold": 0.45,
+      "conformal_abstention_rate": 0.6364
+    }
+  },
+  "calibration_comparison": {
+    "none": {
+      "pr_auc": 0.58066,
+      "roc_auc": 0.85841,
+      "recall_at_fpr_0_1pct": 0.06986,
+      "recall_at_fpr_0_5pct": 0.39721,
+      "recall_at_fpr_1_0pct": 0.43114,
+      "ece": 0.05529,
+      "brier_score": 0.05703,
+      "expected_net_savings": 33796.41,
+      "fraud_prevented_value": 44810.91,
+      "chargeback_loss_incurred": 11756.96,
+      "review_cost_incurred": 2650.5,
+      "false_decline_loss_incurred": 8364.0,
+      "approve_rate": 0.7271,
+      "stepup_rate": 0.0982,
+      "block_rate": 0.1747
+    },
+    "platt": {
+      "pr_auc": 0.58066,
+      "roc_auc": 0.85841,
+      "recall_at_fpr_0_1pct": 0.06986,
+      "recall_at_fpr_0_5pct": 0.39721,
+      "recall_at_fpr_1_0pct": 0.43114,
+      "ece": 0.02108,
+      "brier_score": 0.04812,
+      "expected_net_savings": 29453.24,
+      "fraud_prevented_value": 31958.24,
+      "chargeback_loss_incurred": 24609.63,
+      "review_cost_incurred": 873.0,
+      "false_decline_loss_incurred": 1632.0,
+      "approve_rate": 0.9015,
+      "stepup_rate": 0.0323,
+      "block_rate": 0.0662
+    },
+    "temperature": {
+      "pr_auc": 0.58066,
+      "roc_auc": 0.85841,
+      "recall_at_fpr_0_1pct": 0.06986,
+      "recall_at_fpr_0_5pct": 0.39721,
+      "recall_at_fpr_1_0pct": 0.43114,
+      "ece": 0.03686,
+      "brier_score": 0.05596,
+      "expected_net_savings": 33260.91,
+      "fraud_prevented_value": 40780.41,
+      "chargeback_loss_incurred": 15787.46,
+      "review_cost_incurred": 1507.5,
+      "false_decline_loss_incurred": 6012.0,
+      "approve_rate": 0.8056,
+      "stepup_rate": 0.0558,
+      "block_rate": 0.1385
+    },
+    "isotonic": {
+      "pr_auc": 0.55671,
+      "roc_auc": 0.85317,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.39721,
+      "recall_at_fpr_1_0pct": 0.42515,
+      "ece": 0.02449,
+      "brier_score": 0.04913,
+      "expected_net_savings": 26399.36,
+      "fraud_prevented_value": 27848.36,
+      "chargeback_loss_incurred": 28719.51,
+      "review_cost_incurred": 873.0,
+      "false_decline_loss_incurred": 576.0,
+      "approve_rate": 0.9237,
+      "stepup_rate": 0.0323,
+      "block_rate": 0.044
+    }
+  },
+  "reliability_curves": {
+    "none": [
+      {
+        "bin_lower": 0.0,
+        "bin_upper": 0.1,
+        "count": 4110,
+        "mean_predicted_prob": 0.03787,
+        "observed_fraud_rate": 0.02287
+      },
+      {
+        "bin_lower": 0.1,
+        "bin_upper": 0.2,
+        "count": 813,
+        "mean_predicted_prob": 0.13998,
+        "observed_fraud_rate": 0.07257
+      },
+      {
+        "bin_lower": 0.2,
+        "bin_upper": 0.3,
+        "count": 327,
+        "mean_predicted_prob": 0.24363,
+        "observed_fraud_rate": 0.0948
+      },
+      {
+        "bin_lower": 0.3,
+        "bin_upper": 0.4,
+        "count": 169,
+        "mean_predicted_prob": 0.34566,
+        "observed_fraud_rate": 0.14793
+      },
+      {
+        "bin_lower": 0.4,
+        "bin_upper": 0.5,
+        "count": 123,
+        "mean_predicted_prob": 0.45275,
+        "observed_fraud_rate": 0.18699
+      },
+      {
+        "bin_lower": 0.5,
+        "bin_upper": 0.6,
+        "count": 92,
+        "mean_predicted_prob": 0.54658,
+        "observed_fraud_rate": 0.25
+      },
+      {
+        "bin_lower": 0.6,
+        "bin_upper": 0.7,
+        "count": 73,
+        "mean_predicted_prob": 0.64706,
+        "observed_fraud_rate": 0.32877
+      },
+      {
+        "bin_lower": 0.7,
+        "bin_upper": 0.8,
+        "count": 46,
+        "mean_predicted_prob": 0.74492,
+        "observed_fraud_rate": 0.21739
+      },
+      {
+        "bin_lower": 0.8,
+        "bin_upper": 0.9,
+        "count": 14,
+        "mean_predicted_prob": 0.84478,
+        "observed_fraud_rate": 0.64286
+      },
+      {
+        "bin_lower": 0.9,
+        "bin_upper": 1.0,
+        "count": 232,
+        "mean_predicted_prob": 0.9735,
+        "observed_fraud_rate": 0.875
+      }
+    ],
+    "platt": [
+      {
+        "bin_lower": 0.0,
+        "bin_upper": 0.1,
+        "count": 5322,
+        "mean_predicted_prob": 0.02084,
+        "observed_fraud_rate": 0.03589
+      },
+      {
+        "bin_lower": 0.1,
+        "bin_upper": 0.2,
+        "count": 285,
+        "mean_predicted_prob": 0.14202,
+        "observed_fraud_rate": 0.20351
+      },
+      {
+        "bin_lower": 0.2,
+        "bin_upper": 0.3,
+        "count": 107,
+        "mean_predicted_prob": 0.24513,
+        "observed_fraud_rate": 0.29907
+      },
+      {
+        "bin_lower": 0.3,
+        "bin_upper": 0.4,
+        "count": 39,
+        "mean_predicted_prob": 0.34423,
+        "observed_fraud_rate": 0.20513
+      },
+      {
+        "bin_lower": 0.4,
+        "bin_upper": 0.5,
+        "count": 10,
+        "mean_predicted_prob": 0.44038,
+        "observed_fraud_rate": 0.5
+      },
+      {
+        "bin_lower": 0.5,
+        "bin_upper": 0.6,
+        "count": 5,
+        "mean_predicted_prob": 0.54646,
+        "observed_fraud_rate": 1.0
+      },
+      {
+        "bin_lower": 0.6,
+        "bin_upper": 0.7,
+        "count": 17,
+        "mean_predicted_prob": 0.65952,
+        "observed_fraud_rate": 0.76471
+      },
+      {
+        "bin_lower": 0.7,
+        "bin_upper": 0.8,
+        "count": 51,
+        "mean_predicted_prob": 0.76119,
+        "observed_fraud_rate": 0.88235
+      },
+      {
+        "bin_lower": 0.8,
+        "bin_upper": 0.9,
+        "count": 125,
+        "mean_predicted_prob": 0.85001,
+        "observed_fraud_rate": 0.888
+      },
+      {
+        "bin_lower": 0.9,
+        "bin_upper": 1.0,
+        "count": 38,
+        "mean_predicted_prob": 0.9224,
+        "observed_fraud_rate": 0.86842
+      }
+    ],
+    "temperature": [
+      {
+        "bin_lower": 0.0,
+        "bin_upper": 0.1,
+        "count": 4725,
+        "mean_predicted_prob": 0.02217,
+        "observed_fraud_rate": 0.0273
+      },
+      {
+        "bin_lower": 0.1,
+        "bin_upper": 0.2,
+        "count": 430,
+        "mean_predicted_prob": 0.14326,
+        "observed_fraud_rate": 0.10698
+      },
+      {
+        "bin_lower": 0.2,
+        "bin_upper": 0.3,
+        "count": 186,
+        "mean_predicted_prob": 0.24641,
+        "observed_fraud_rate": 0.0914
+      },
+      {
+        "bin_lower": 0.3,
+        "bin_upper": 0.4,
+        "count": 108,
+        "mean_predicted_prob": 0.34646,
+        "observed_fraud_rate": 0.2037
+      },
+      {
+        "bin_lower": 0.4,
+        "bin_upper": 0.5,
+        "count": 93,
+        "mean_predicted_prob": 0.45406,
+        "observed_fraud_rate": 0.19355
+      },
+      {
+        "bin_lower": 0.5,
+        "bin_upper": 0.6,
+        "count": 70,
+        "mean_predicted_prob": 0.54613,
+        "observed_fraud_rate": 0.24286
+      },
+      {
+        "bin_lower": 0.6,
+        "bin_upper": 0.7,
+        "count": 62,
+        "mean_predicted_prob": 0.64376,
+        "observed_fraud_rate": 0.30645
+      },
+      {
+        "bin_lower": 0.7,
+        "bin_upper": 0.8,
+        "count": 54,
+        "mean_predicted_prob": 0.74584,
+        "observed_fraud_rate": 0.31481
+      },
+      {
+        "bin_lower": 0.8,
+        "bin_upper": 0.9,
+        "count": 32,
+        "mean_predicted_prob": 0.84289,
+        "observed_fraud_rate": 0.25
+      },
+      {
+        "bin_lower": 0.9,
+        "bin_upper": 1.0,
+        "count": 239,
+        "mean_predicted_prob": 0.98932,
+        "observed_fraud_rate": 0.87029
+      }
+    ],
+    "isotonic": [
+      {
+        "bin_lower": 0.0,
+        "bin_upper": 0.1,
+        "count": 5541,
+        "mean_predicted_prob": 0.02487,
+        "observed_fraud_rate": 0.04187
+      },
+      {
+        "bin_lower": 0.1,
+        "bin_upper": 0.2,
+        "count": 206,
+        "mean_predicted_prob": 0.14825,
+        "observed_fraud_rate": 0.27184
+      },
+      {
+        "bin_lower": 0.2,
+        "bin_upper": 0.3,
+        "count": 5,
+        "mean_predicted_prob": 0.25735,
+        "observed_fraud_rate": 0.2
+      },
+      {
+        "bin_lower": 0.3,
+        "bin_upper": 0.4,
+        "count": 13,
+        "mean_predicted_prob": 0.33311,
+        "observed_fraud_rate": 0.53846
+      },
+      {
+        "bin_lower": 0.4,
+        "bin_upper": 0.5,
+        "count": 1,
+        "mean_predicted_prob": 0.4006,
+        "observed_fraud_rate": 1.0
+      },
+      {
+        "bin_lower": 0.5,
+        "bin_upper": 0.6,
+        "count": 4,
+        "mean_predicted_prob": 0.54892,
+        "observed_fraud_rate": 1.0
+      },
+      {
+        "bin_lower": 0.6,
+        "bin_upper": 0.7,
+        "count": 1,
+        "mean_predicted_prob": 0.69148,
+        "observed_fraud_rate": 0.0
+      },
+      {
+        "bin_lower": 0.7,
+        "bin_upper": 0.8,
+        "count": 0,
+        "mean_predicted_prob": 0.75,
+        "observed_fraud_rate": 0.0
+      },
+      {
+        "bin_lower": 0.8,
+        "bin_upper": 0.9,
+        "count": 49,
+        "mean_predicted_prob": 0.8654,
+        "observed_fraud_rate": 0.85714
+      },
+      {
+        "bin_lower": 0.9,
+        "bin_upper": 1.0,
+        "count": 179,
+        "mean_predicted_prob": 0.99875,
+        "observed_fraud_rate": 0.88268
+      }
+    ]
+  },
+  "drift_monitoring": {
+    "early_test_window": {
+      "overall_status": "CRITICAL_SHIFT",
+      "max_psi": 2.4791,
+      "mean_psi": 0.2259,
+      "drifted_feature_count": 19,
+      "score_psi": 0.0047,
+      "feature_metrics": [
+        {
+          "feature": "g_matured_entity_exposure",
+          "psi": 2.4791,
+          "ks_stat": 0.6041,
+          "ks_pvalue": 0.0,
+          "ref_mean": 108.9792,
+          "cur_mean": 1459.2301,
+          "shift_pct": 1239.0,
+          "status": "CRITICAL"
+        },
+        {
+          "feature": "g_merch_deg",
+          "psi": 2.0062,
+          "ks_stat": 0.127,
+          "ks_pvalue": 0.0,
+          "ref_mean": 213.4508,
+          "cur_mean": 199.3568,
+          "shift_pct": -6.6,
+          "status": "CRITICAL"
+        },
+        {
+          "feature": "g_sage_neighbor_deg_mean",
+          "psi": 1.2182,
+          "ks_stat": 0.144,
+          "ks_pvalue": 0.0,
+          "ref_mean": 164.8081,
+          "cur_mean": 167.6267,
+          "shift_pct": 1.71,
+          "status": "CRITICAL"
+        },
+        {
+          "feature": "g_matured_neighbor_fraud_rate",
+          "psi": 0.5009,
+          "ks_stat": 0.2022,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.0369,
+          "cur_mean": 0.0589,
+          "shift_pct": 59.67,
+          "status": "CRITICAL"
+        },
+        {
+          "feature": "train_freq_card_id",
+          "psi": 0.2436,
+          "ks_stat": 0.1913,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.0004,
+          "cur_mean": 0.0003,
+          "shift_pct": -18.65,
+          "status": "WARN"
+        },
+        {
+          "feature": "card_cnt_7d",
+          "psi": 0.1007,
+          "ks_stat": 0.0433,
+          "ks_pvalue": 0.001695,
+          "ref_mean": 0.8088,
+          "cur_mean": 0.8093,
+          "shift_pct": 0.06,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_card_deg",
+          "psi": 0.0926,
+          "ks_stat": 0.0433,
+          "ks_pvalue": 0.001695,
+          "ref_mean": 2.2944,
+          "cur_mean": 2.4235,
+          "shift_pct": 5.63,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_2hop_card_reach",
+          "psi": 0.0839,
+          "ks_stat": 0.1083,
+          "ks_pvalue": 0.0,
+          "ref_mean": 5.1614,
+          "cur_mean": 5.8766,
+          "shift_pct": 13.86,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_sub_deg",
+          "psi": 0.0825,
+          "ks_stat": 0.0994,
+          "ks_pvalue": 0.0,
+          "ref_mean": 4.0872,
+          "cur_mean": 4.5649,
+          "shift_pct": 11.69,
+          "status": "WARN"
+        },
+        {
+          "feature": "log_card_time_since_last",
+          "psi": 0.0793,
+          "ks_stat": 0.0589,
+          "ks_pvalue": 4e-06,
+          "ref_mean": 12.4763,
+          "cur_mean": 12.5257,
+          "shift_pct": 0.4,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_dev_sub_cooccurrence",
+          "psi": 0.0711,
+          "ks_stat": 0.0275,
+          "ks_pvalue": 0.113498,
+          "ref_mean": 0.6346,
+          "cur_mean": 0.6342,
+          "shift_pct": -0.06,
+          "status": "OK"
+        },
+        {
+          "feature": "sub_unique_cards_7d",
+          "psi": 0.0689,
+          "ks_stat": 0.0985,
+          "ks_pvalue": 0.0,
+          "ref_mean": 2.1052,
+          "cur_mean": 2.3835,
+          "shift_pct": 13.22,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_card_dev_jaccard",
+          "psi": 0.0591,
+          "ks_stat": 0.0366,
+          "ks_pvalue": 0.012857,
+          "ref_mean": 0.064,
+          "cur_mean": 0.0694,
+          "shift_pct": 8.5,
+          "status": "OK"
+        },
+        {
+          "feature": "card_amt_mean_7d",
+          "psi": 0.0552,
+          "ks_stat": 0.0926,
+          "ks_pvalue": 0.0,
+          "ref_mean": 33.0294,
+          "cur_mean": 44.1392,
+          "shift_pct": 33.64,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_shared_triangle_score",
+          "psi": 0.0534,
+          "ks_stat": 0.0271,
+          "ks_pvalue": 0.123263,
+          "ref_mean": 0.4414,
+          "cur_mean": 0.4683,
+          "shift_pct": 6.09,
+          "status": "OK"
+        },
+        {
+          "feature": "log_amount",
+          "psi": 0.0482,
+          "ks_stat": 0.1186,
+          "ks_pvalue": 0.0,
+          "ref_mean": 3.7379,
+          "cur_mean": 3.9859,
+          "shift_pct": 6.64,
+          "status": "WARN"
+        },
+        {
+          "feature": "card_amt_ratio_7d",
+          "psi": 0.0447,
+          "ks_stat": 0.0289,
+          "ks_pvalue": 0.084658,
+          "ref_mean": 1.5096,
+          "cur_mean": 1.7088,
+          "shift_pct": 13.19,
+          "status": "OK"
+        },
+        {
+          "feature": "train_freq_device_id",
+          "psi": 0.0395,
+          "ks_stat": 0.0704,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.0092,
+          "cur_mean": 0.0092,
+          "shift_pct": -0.53,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_dev_deg",
+          "psi": 0.0304,
+          "ks_stat": 0.073,
+          "ks_pvalue": 0.0,
+          "ref_mean": 1.9824,
+          "cur_mean": 2.2734,
+          "shift_pct": 14.68,
+          "status": "WARN"
+        },
+        {
+          "feature": "dev_unique_cards_7d",
+          "psi": 0.0301,
+          "ks_stat": 0.073,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.994,
+          "cur_mean": 1.139,
+          "shift_pct": 14.59,
+          "status": "WARN"
+        },
+        {
+          "feature": "merch_cnt_1h",
+          "psi": 0.0165,
+          "ks_stat": 0.0455,
+          "ks_pvalue": 0.000819,
+          "ref_mean": 2.4772,
+          "cur_mean": 2.1817,
+          "shift_pct": -11.93,
+          "status": "WARN"
+        },
+        {
+          "feature": "train_freq_ip_subnet",
+          "psi": 0.0089,
+          "ks_stat": 0.0406,
+          "ks_pvalue": 0.00401,
+          "ref_mean": 0.0014,
+          "cur_mean": 0.0014,
+          "shift_pct": -3.16,
+          "status": "WARN"
+        },
+        {
+          "feature": "merch_amt_ratio_7d",
+          "psi": 0.0088,
+          "ks_stat": 0.0161,
+          "ks_pvalue": 0.70816,
+          "ref_mean": 1.1943,
+          "cur_mean": 1.182,
+          "shift_pct": -1.02,
+          "status": "OK"
+        },
+        {
+          "feature": "train_freq_merchant_id",
+          "psi": 0.0086,
+          "ks_stat": 0.026,
+          "ks_pvalue": 0.154175,
+          "ref_mean": 0.101,
+          "cur_mean": 0.0958,
+          "shift_pct": -5.11,
+          "status": "OK"
+        },
+        {
+          "feature": "log_dist_km",
+          "psi": 0.0085,
+          "ks_stat": 0.0337,
+          "ks_pvalue": 0.027829,
+          "ref_mean": 3.2089,
+          "cur_mean": 3.2934,
+          "shift_pct": 2.63,
+          "status": "OK"
+        },
+        {
+          "feature": "hour_cos",
+          "psi": 0.0052,
+          "ks_stat": 0.0187,
+          "ks_pvalue": 0.523502,
+          "ref_mean": -0.0369,
+          "cur_mean": -0.0437,
+          "shift_pct": -18.53,
+          "status": "OK"
+        },
+        {
+          "feature": "hour_sin",
+          "psi": 0.0035,
+          "ks_stat": 0.0392,
+          "ks_pvalue": 0.006162,
+          "ref_mean": 0.0339,
+          "cur_mean": -0.0078,
+          "shift_pct": -123.14,
+          "status": "WARN"
+        },
+        {
+          "feature": "sub_cnt_24h",
+          "psi": 0.0026,
+          "ks_stat": 0.0118,
+          "ks_pvalue": 0.9545,
+          "ref_mean": 0.7144,
+          "cur_mean": 0.7426,
+          "shift_pct": 3.94,
+          "status": "OK"
+        },
+        {
+          "feature": "amount_cents",
+          "psi": 0.0023,
+          "ks_stat": 0.016,
+          "ks_pvalue": 0.716182,
+          "ref_mean": 0.4984,
+          "cur_mean": 0.4911,
+          "shift_pct": -1.48,
+          "status": "OK"
+        },
+        {
+          "feature": "card_cnt_24h",
+          "psi": 0.0012,
+          "ks_stat": 0.0014,
+          "ks_pvalue": 1.0,
+          "ref_mean": 0.1762,
+          "cur_mean": 0.1741,
+          "shift_pct": -1.22,
+          "status": "OK"
+        },
+        {
+          "feature": "train_freq_email_domain",
+          "psi": 0.0008,
+          "ks_stat": 0.009,
+          "ks_pvalue": 0.997615,
+          "ref_mean": 0.2899,
+          "cur_mean": 0.2918,
+          "shift_pct": 0.64,
+          "status": "OK"
+        },
+        {
+          "feature": "card_amt_sum_24h",
+          "psi": 0.0007,
+          "ks_stat": 0.0216,
+          "ks_pvalue": 0.337954,
+          "ref_mean": 11.7001,
+          "cur_mean": 13.4473,
+          "shift_pct": 14.93,
+          "status": "OK"
+        },
+        {
+          "feature": "dev_cnt_24h",
+          "psi": 0.0002,
+          "ks_stat": 0.0166,
+          "ks_pvalue": 0.674895,
+          "ref_mean": 0.3228,
+          "cur_mean": 0.3655,
+          "shift_pct": 13.21,
+          "status": "OK"
+        }
+      ]
+    },
+    "late_test_window": {
+      "overall_status": "CRITICAL_SHIFT",
+      "max_psi": 2.7743,
+      "mean_psi": 0.1233,
+      "drifted_feature_count": 22,
+      "score_psi": 0.0407,
+      "feature_metrics": [
+        {
+          "feature": "g_matured_entity_exposure",
+          "psi": 2.7743,
+          "ks_stat": 0.6193,
+          "ks_pvalue": 0.0,
+          "ref_mean": 108.9792,
+          "cur_mean": 1791.7147,
+          "shift_pct": 1544.09,
+          "status": "CRITICAL"
+        },
+        {
+          "feature": "g_matured_neighbor_fraud_rate",
+          "psi": 0.2289,
+          "ks_stat": 0.2627,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.0369,
+          "cur_mean": 0.0484,
+          "shift_pct": 31.22,
+          "status": "WARN"
+        },
+        {
+          "feature": "train_freq_card_id",
+          "psi": 0.2248,
+          "ks_stat": 0.1887,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.0004,
+          "cur_mean": 0.0003,
+          "shift_pct": -17.7,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_sage_neighbor_deg_mean",
+          "psi": 0.1315,
+          "ks_stat": 0.3171,
+          "ks_pvalue": 0.0,
+          "ref_mean": 164.8081,
+          "cur_mean": 240.5316,
+          "shift_pct": 45.95,
+          "status": "WARN"
+        },
+        {
+          "feature": "log_amount",
+          "psi": 0.0879,
+          "ks_stat": 0.1472,
+          "ks_pvalue": 0.0,
+          "ref_mean": 3.7379,
+          "cur_mean": 4.0706,
+          "shift_pct": 8.9,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_2hop_card_reach",
+          "psi": 0.0861,
+          "ks_stat": 0.2569,
+          "ks_pvalue": 0.0,
+          "ref_mean": 5.1614,
+          "cur_mean": 8.174,
+          "shift_pct": 58.37,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_merch_deg",
+          "psi": 0.0783,
+          "ks_stat": 0.1649,
+          "ks_pvalue": 0.0,
+          "ref_mean": 213.4508,
+          "cur_mean": 327.3813,
+          "shift_pct": 53.38,
+          "status": "WARN"
+        },
+        {
+          "feature": "card_amt_mean_7d",
+          "psi": 0.072,
+          "ks_stat": 0.2387,
+          "ks_pvalue": 0.0,
+          "ref_mean": 33.0294,
+          "cur_mean": 59.4666,
+          "shift_pct": 80.04,
+          "status": "WARN"
+        },
+        {
+          "feature": "sub_unique_cards_7d",
+          "psi": 0.0637,
+          "ks_stat": 0.2359,
+          "ks_pvalue": 0.0,
+          "ref_mean": 2.1052,
+          "cur_mean": 3.2637,
+          "shift_pct": 55.03,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_sub_deg",
+          "psi": 0.0632,
+          "ks_stat": 0.2363,
+          "ks_pvalue": 0.0,
+          "ref_mean": 4.0872,
+          "cur_mean": 6.284,
+          "shift_pct": 53.75,
+          "status": "WARN"
+        },
+        {
+          "feature": "train_freq_device_id",
+          "psi": 0.0459,
+          "ks_stat": 0.0806,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.0092,
+          "cur_mean": 0.0084,
+          "shift_pct": -9.21,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_dev_deg",
+          "psi": 0.0274,
+          "ks_stat": 0.1821,
+          "ks_pvalue": 0.0,
+          "ref_mean": 1.9824,
+          "cur_mean": 3.1603,
+          "shift_pct": 59.42,
+          "status": "WARN"
+        },
+        {
+          "feature": "dev_unique_cards_7d",
+          "psi": 0.0272,
+          "ks_stat": 0.1821,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.994,
+          "cur_mean": 1.596,
+          "shift_pct": 60.56,
+          "status": "WARN"
+        },
+        {
+          "feature": "log_card_time_since_last",
+          "psi": 0.0231,
+          "ks_stat": 0.2062,
+          "ks_pvalue": 0.0,
+          "ref_mean": 12.4763,
+          "cur_mean": 12.3327,
+          "shift_pct": -1.15,
+          "status": "WARN"
+        },
+        {
+          "feature": "card_cnt_7d",
+          "psi": 0.0199,
+          "ks_stat": 0.2061,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.8088,
+          "cur_mean": 1.2613,
+          "shift_pct": 55.95,
+          "status": "WARN"
+        },
+        {
+          "feature": "card_amt_ratio_7d",
+          "psi": 0.0197,
+          "ks_stat": 0.1056,
+          "ks_pvalue": 0.0,
+          "ref_mean": 1.5096,
+          "cur_mean": 1.7674,
+          "shift_pct": 17.08,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_card_deg",
+          "psi": 0.0186,
+          "ks_stat": 0.2061,
+          "ks_pvalue": 0.0,
+          "ref_mean": 2.2944,
+          "cur_mean": 3.381,
+          "shift_pct": 47.36,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_shared_triangle_score",
+          "psi": 0.012,
+          "ks_stat": 0.1921,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.4414,
+          "cur_mean": 0.6163,
+          "shift_pct": 39.63,
+          "status": "WARN"
+        },
+        {
+          "feature": "train_freq_ip_subnet",
+          "psi": 0.0107,
+          "ks_stat": 0.0483,
+          "ks_pvalue": 0.000304,
+          "ref_mean": 0.0014,
+          "cur_mean": 0.0014,
+          "shift_pct": -5.0,
+          "status": "WARN"
+        },
+        {
+          "feature": "g_dev_sub_cooccurrence",
+          "psi": 0.0094,
+          "ks_stat": 0.1737,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.6346,
+          "cur_mean": 0.971,
+          "shift_pct": 53.01,
+          "status": "WARN"
+        },
+        {
+          "feature": "log_dist_km",
+          "psi": 0.0068,
+          "ks_stat": 0.0368,
+          "ks_pvalue": 0.01218,
+          "ref_mean": 3.2089,
+          "cur_mean": 3.34,
+          "shift_pct": 4.09,
+          "status": "OK"
+        },
+        {
+          "feature": "amount_cents",
+          "psi": 0.0062,
+          "ks_stat": 0.0107,
+          "ks_pvalue": 0.981945,
+          "ref_mean": 0.4984,
+          "cur_mean": 0.4977,
+          "shift_pct": -0.14,
+          "status": "OK"
+        },
+        {
+          "feature": "g_card_dev_jaccard",
+          "psi": 0.006,
+          "ks_stat": 0.1673,
+          "ks_pvalue": 0.0,
+          "ref_mean": 0.064,
+          "cur_mean": 0.0829,
+          "shift_pct": 29.63,
+          "status": "WARN"
+        },
+        {
+          "feature": "hour_sin",
+          "psi": 0.0052,
+          "ks_stat": 0.051,
+          "ks_pvalue": 0.000112,
+          "ref_mean": 0.0339,
+          "cur_mean": -0.0309,
+          "shift_pct": -191.24,
+          "status": "WARN"
+        },
+        {
+          "feature": "merch_amt_ratio_7d",
+          "psi": 0.0043,
+          "ks_stat": 0.0309,
+          "ks_pvalue": 0.054262,
+          "ref_mean": 1.1943,
+          "cur_mean": 1.1965,
+          "shift_pct": 0.19,
+          "status": "OK"
+        },
+        {
+          "feature": "hour_cos",
+          "psi": 0.0033,
+          "ks_stat": 0.0341,
+          "ks_pvalue": 0.024802,
+          "ref_mean": -0.0369,
+          "cur_mean": 0.0073,
+          "shift_pct": 119.69,
+          "status": "OK"
+        },
+        {
+          "feature": "card_amt_sum_24h",
+          "psi": 0.003,
+          "ks_stat": 0.0329,
+          "ks_pvalue": 0.034125,
+          "ref_mean": 11.7001,
+          "cur_mean": 16.1521,
+          "shift_pct": 38.05,
+          "status": "OK"
+        },
+        {
+          "feature": "merch_cnt_1h",
+          "psi": 0.003,
+          "ks_stat": 0.0169,
+          "ks_pvalue": 0.649626,
+          "ref_mean": 2.4772,
+          "cur_mean": 2.4453,
+          "shift_pct": -1.29,
+          "status": "OK"
+        },
+        {
+          "feature": "train_freq_merchant_id",
+          "psi": 0.0025,
+          "ks_stat": 0.0185,
+          "ks_pvalue": 0.539147,
+          "ref_mean": 0.101,
+          "cur_mean": 0.1015,
+          "shift_pct": 0.57,
+          "status": "OK"
+        },
+        {
+          "feature": "train_freq_email_domain",
+          "psi": 0.0011,
+          "ks_stat": 0.0078,
+          "ks_pvalue": 0.999817,
+          "ref_mean": 0.2899,
+          "cur_mean": 0.2909,
+          "shift_pct": 0.33,
+          "status": "OK"
+        },
+        {
+          "feature": "dev_cnt_24h",
+          "psi": 0.0008,
+          "ks_stat": 0.0317,
+          "ks_pvalue": 0.045659,
+          "ref_mean": 0.3228,
+          "cur_mean": 0.373,
+          "shift_pct": 15.55,
+          "status": "OK"
+        },
+        {
+          "feature": "sub_cnt_24h",
+          "psi": 0.0006,
+          "ks_stat": 0.0261,
+          "ks_pvalue": 0.151966,
+          "ref_mean": 0.7144,
+          "cur_mean": 0.786,
+          "shift_pct": 10.02,
+          "status": "OK"
+        },
+        {
+          "feature": "card_cnt_24h",
+          "psi": 0.0,
+          "ks_stat": 0.0139,
+          "ks_pvalue": 0.859109,
+          "ref_mean": 0.1762,
+          "cur_mean": 0.196,
+          "shift_pct": 11.24,
+          "status": "OK"
+        }
+      ]
+    }
+  },
+  "drift_adaptation_experiment": {
+    "static_model_on_late_drift": {
+      "pr_auc": 0.54003,
+      "roc_auc": 0.84989,
+      "recall_at_fpr_0_1pct": 0.0,
+      "recall_at_fpr_0_5pct": 0.41597,
+      "recall_at_fpr_1_0pct": 0.43277,
+      "ece": 0.02294,
+      "brier_score": 0.04683,
+      "expected_net_savings": 12924.04,
+      "fraud_prevented_value": 13533.04,
+      "chargeback_loss_incurred": 14946.03,
+      "review_cost_incurred": 405.0,
+      "false_decline_loss_incurred": 204.0,
+      "approve_rate": 0.93,
+      "stepup_rate": 0.03,
+      "block_rate": 0.04
+    },
+    "rolling_retrained_on_late_drift": {
+      "pr_auc": 0.41297,
+      "roc_auc": 0.70944,
+      "recall_at_fpr_0_1pct": 0.08403,
+      "recall_at_fpr_0_5pct": 0.30252,
+      "recall_at_fpr_1_0pct": 0.40336,
+      "ece": 0.05322,
+      "brier_score": 0.05431,
+      "expected_net_savings": 12199.59,
+      "fraud_prevented_value": 12588.09,
+      "chargeback_loss_incurred": 15890.98,
+      "review_cost_incurred": 4.5,
+      "false_decline_loss_incurred": 384.0,
+      "approve_rate": 0.9553,
+      "stepup_rate": 0.0003,
+      "block_rate": 0.0443
+    }
+  },
+  "entity_graph_summary": {
+    "nodes": 1133,
+    "edges": 1123,
+    "connected_components": 57,
+    "top_clusters": [
+      {
+        "cluster_id": "CLUSTER_01",
+        "total_nodes": 830,
+        "total_edges": 876,
+        "cards": 292,
+        "devices": 251,
+        "subnets": 237,
+        "fraud_edges": 60,
+        "density": 0.0025,
+        "sample_entities": [
+          "CARD_01750",
+          "10.3.40.0/24",
+          "MERCH_0128",
+          "10.2.143.0/24",
+          "CARD_01234",
+          "10.3.142.0/24",
+          "DEV_00805",
+          "10.2.159.0/24"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_02",
+        "total_nodes": 19,
+        "total_edges": 18,
+        "cards": 6,
+        "devices": 6,
+        "subnets": 6,
+        "fraud_edges": 0,
+        "density": 0.1053,
+        "sample_entities": [
+          "10.2.117.0/24",
+          "10.2.64.0/24",
+          "10.3.114.0/24",
+          "DEV_01714",
+          "CARD_00761",
+          "CARD_02230",
+          "CARD_00435",
+          "DEV_01960"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_03",
+        "total_nodes": 16,
+        "total_edges": 15,
+        "cards": 5,
+        "devices": 5,
+        "subnets": 4,
+        "fraud_edges": 0,
+        "density": 0.125,
+        "sample_entities": [
+          "CARD_01931",
+          "CARD_00418",
+          "DEV_00881",
+          "10.2.252.0/24",
+          "CARD_00388",
+          "10.3.187.0/24",
+          "DEV_01690",
+          "CARD_01247"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_04",
+        "total_nodes": 13,
+        "total_edges": 12,
+        "cards": 4,
+        "devices": 3,
+        "subnets": 4,
+        "fraud_edges": 0,
+        "density": 0.1538,
+        "sample_entities": [
+          "10.1.23.0/24",
+          "MERCH_0024",
+          "10.0.26.0/24",
+          "CARD_02167",
+          "DEV_02352",
+          "CARD_02463",
+          "10.2.15.0/24",
+          "10.3.8.0/24"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_05",
+        "total_nodes": 13,
+        "total_edges": 12,
+        "cards": 4,
+        "devices": 4,
+        "subnets": 3,
+        "fraud_edges": 0,
+        "density": 0.1538,
+        "sample_entities": [
+          "DEV_00528",
+          "DEV_00998",
+          "CARD_00341",
+          "DEV_00864",
+          "10.2.226.0/24",
+          "CARD_02581",
+          "10.1.150.0/24",
+          "MERCH_0060"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_06",
+        "total_nodes": 13,
+        "total_edges": 12,
+        "cards": 4,
+        "devices": 4,
+        "subnets": 3,
+        "fraud_edges": 0,
+        "density": 0.1538,
+        "sample_entities": [
+          "CARD_00081",
+          "MERCH_0021",
+          "DEV_02389",
+          "10.2.26.0/24",
+          "DEV_01534",
+          "CARD_02784",
+          "10.0.135.0/24",
+          "CARD_00821"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_07",
+        "total_nodes": 10,
+        "total_edges": 9,
+        "cards": 3,
+        "devices": 3,
+        "subnets": 3,
+        "fraud_edges": 0,
+        "density": 0.2,
+        "sample_entities": [
+          "DEV_00047",
+          "10.3.125.0/24",
+          "CARD_00280",
+          "10.0.110.0/24",
+          "DEV_00465",
+          "CARD_02248",
+          "CARD_02961",
+          "10.3.132.0/24"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_08",
+        "total_nodes": 7,
+        "total_edges": 6,
+        "cards": 2,
+        "devices": 2,
+        "subnets": 2,
+        "fraud_edges": 0,
+        "density": 0.2857,
+        "sample_entities": [
+          "CARD_00380",
+          "10.0.5.0/24",
+          "MERCH_0020",
+          "DEV_01812",
+          "DEV_01041",
+          "10.1.218.0/24",
+          "CARD_01186"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_09",
+        "total_nodes": 7,
+        "total_edges": 6,
+        "cards": 1,
+        "devices": 2,
+        "subnets": 2,
+        "fraud_edges": 3,
+        "density": 0.2857,
+        "sample_entities": [
+          "MERCH_0245",
+          "10.0.57.0/24",
+          "DEV_01612",
+          "10.0.186.0/24",
+          "DEV_01394",
+          "MERCH_0292",
+          "CARD_02722"
+        ]
+      },
+      {
+        "cluster_id": "CLUSTER_10",
+        "total_nodes": 7,
+        "total_edges": 6,
+        "cards": 2,
+        "devices": 2,
+        "subnets": 1,
+        "fraud_edges": 6,
+        "density": 0.2857,
+        "sample_entities": [
+          "DEV_01272",
+          "MERCH_0266",
+          "CARD_01977",
+          "10.1.19.0/24",
+          "CARD_00818",
+          "MERCH_0458",
+          "DEV_00065"
+        ]
+      }
+    ]
+  }
+}

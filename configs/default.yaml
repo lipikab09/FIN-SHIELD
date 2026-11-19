@@ -1,0 +1,48 @@
+project:
+  name: "FIN-SHIELD ML"
+  version: "0.1.0"
+  seed: 42
+
+data:
+  adapter: "synthetic_stream"   # Options: synthetic_stream | ieee_cis | credit_card_csv
+  data_dir: "data"
+  ieee_cis_dir: "data/ieee-cis"
+  credit_card_path: "data/creditcard.csv"
+  n_synthetic_events: 24000
+  label_delay_hours: 72
+  splits:
+    train_ratio: 0.60
+    calib_ratio: 0.15
+    test_ratio: 0.25
+
+features:
+  windows_seconds: [3600, 86400, 604800]   # 1h, 24h, 7d
+  entity_columns: ["card_id", "device_id", "ip_subnet", "merchant_id", "email_domain"]
+  graph_lookback_seconds: 604800
+
+models:
+  active_model: "graph_augmented_gbdt"
+  calibration_method: "isotonic"          # Options: isotonic | platt | temperature
+  conformal_alpha: 0.05
+  neural:
+    hidden_dims: [128, 64]
+    dropout: 0.25
+    epochs: 14
+    batch_size: 256
+    lr: 0.0015
+    focal_gamma: 2.0
+
+policy:
+  fixed_chargeback_fee: 25.0
+  chargeback_amount_multiplier: 1.0
+  stepup_review_cost: 4.50
+  stepup_intercept_rate: 0.82
+  false_decline_penalty: 12.0
+  max_stepup_rate: 0.06
+  max_block_rate: 0.025
+
+drift:
+  psi_warn_threshold: 0.10
+  psi_critical_threshold: 0.25
+  ks_alpha: 0.01
+  n_bins: 10
